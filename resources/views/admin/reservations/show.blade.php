@@ -27,7 +27,9 @@
                 </div>
                 <div>
                     @php
-                            $status = $reservation->status->value ?? $reservation->status;
+                               $status = $reservation->status instanceof \BackedEnum
+        ? $reservation->status->value
+        : $reservation->status;
 
     $statusColors = [
         'pending' => 'bg-yellow-100 text-yellow-800',
