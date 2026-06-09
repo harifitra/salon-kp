@@ -27,12 +27,14 @@
                 </div>
                 <div>
                     @php
-                        $statusColors = [
-                            'pending' => 'bg-yellow-100 text-yellow-800',
-                            'confirmed' => 'bg-blue-100 text-blue-800',
-                            'completed' => 'bg-green-100 text-green-800',
-                            'cancelled' => 'bg-red-100 text-red-800',
-                        ];
+                            $status = $reservation->status->value ?? $reservation->status;
+
+    $statusColors = [
+        'pending' => 'bg-yellow-100 text-yellow-800',
+        'confirmed' => 'bg-blue-100 text-blue-800',
+        'completed' => 'bg-green-100 text-green-800',
+        'cancelled' => 'bg-red-100 text-red-800',
+    ];
                     @endphp
                     <span class="px-3 py-1 inline-flex text-sm font-semibold rounded-full uppercase {{ $statusColors[$reservation->status] }}">
                         {{ $reservation->status }}
@@ -100,10 +102,10 @@
                 @method('PATCH')
                 <div class="mb-4">
                     <select name="status" class="w-full rounded-md border-gray-300 shadow-sm focus:border-salon-gold focus:ring focus:ring-salon-beige" required>
-                        <option value="pending" {{ $reservation->status == 'pending' ? 'selected' : '' }}>Pending</option>
-                        <option value="confirmed" {{ $reservation->status == 'confirmed' ? 'selected' : '' }}>Confirmed</option>
-                        <option value="completed" {{ $reservation->status == 'completed' ? 'selected' : '' }}>Completed</option>
-                        <option value="cancelled" {{ $reservation->status == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
+                        <option value="pending" {{ $status == 'pending' ? 'selected' : '' }}>Pending</option>
+<option value="confirmed" {{ $status == 'confirmed' ? 'selected' : '' }}>Confirmed</option>
+<option value="completed" {{ $status == 'completed' ? 'selected' : '' }}>Completed</option>
+<option value="cancelled" {{ $status == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
                     </select>
                 </div>
                 <button type="submit" class="w-full bg-salon-gold hover:bg-salon-goldHover text-white font-medium py-2 px-4 rounded shadow-sm">
