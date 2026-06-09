@@ -38,9 +38,9 @@
         'cancelled' => 'bg-red-100 text-red-800',
     ];
                     @endphp
-                    <span class="px-3 py-1 inline-flex text-sm font-semibold rounded-full uppercase {{ $statusColors[$reservation->status] }}">
-                        {{ $reservation->status }}
-                    </span>
+                    <span class="px-3 py-1 inline-flex text-sm font-semibold rounded-full uppercase {{ $statusColors[$status] ?? 'bg-gray-100 text-gray-800' }}">
+    {{ $status }}
+</span>
                 </div>
             </div>
 
