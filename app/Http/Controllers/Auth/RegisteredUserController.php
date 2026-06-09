@@ -44,6 +44,9 @@ class RegisteredUserController extends Controller
 
         $user->assignRole('customer');
 
+        $user->assignRole('customer');
+$user->refresh();
+
         event(new Registered($user));
 
         Auth::login($user);
